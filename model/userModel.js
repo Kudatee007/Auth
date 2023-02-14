@@ -36,12 +36,12 @@ userSchema.pre("save", async function (next) {
 });
 
 userSchema.methods.generateToken = function () {
-return jwt.sign({userid: this._id, name: this.name}, process.env.JWT_SECRET,  { expiresIn: "3d"})
-}
+return jwt.sign({userId: this._id, name: this.name}, process.env.JWT_SECRET,  { expiresIn: "3d"})
+};
 
 userSchema.methods.comparePassword = async function (userPassword) {
   const isCorrect = await bcrypt.compare(userPassword, this.password)
   return isCorrect;
-}
+};
 
 module.exports = mongoose.model("User", userSchema );

@@ -2,12 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const PORT = 9900;
+const PORT = process.env.PORT || 9900;
 mongoose.set('strictQuery', true);
 const notFound = require('./middleware/notFound');
 const authRouter = require('./routes/authRouter')
 const journalRouter = require('./routes/journalRouter')
 const auth = require('./middleware/auth')
+const cors = require("cors")
 
 // MIDDLEWARE
 app.use(express.json());
